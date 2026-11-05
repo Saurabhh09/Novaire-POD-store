@@ -1,0 +1,6 @@
+{
+  "name": "NOVAIRE — Global Print-on-Demand & Menswear Store",
+  "description": "Precision Shopify-integrated Print-on-Demand (POD) apparel and contemporary menswear storefront featuring live garment customization, Liquid & JSON theme architecture, and global checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
