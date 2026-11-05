@@ -74,29 +74,59 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white border-b border-neutral-200/80 transition-colors">
-        <div className="max-w-[1800px] mx-auto px-4 sm:px-8 h-14 flex items-center justify-between gap-4">
+      {/* 0. Diwali Festive Announcement Top Bar */}
+      <div className="bg-[#18130E] text-[#F3E5D8] border-b border-[#2D2319] text-[10px] sm:text-xs py-1.5 px-3 select-none">
+        <div className="max-w-[1800px] mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap">
+            <span className="text-[#F59E0B] font-bold text-[11px] shrink-0">✨</span>
+            <span className="font-semibold tracking-wider uppercase text-[#E5A93C] shrink-0">
+              FESTIVE EDIT:
+            </span>
+            <span className="tracking-wide text-neutral-300">
+              FREE SHIPPING ABOVE ₹1,499 · USE CODE <strong className="text-white bg-[#3A2A1A] px-1.5 py-0.5 rounded font-mono-code">DIWALI20</strong>
+            </span>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-3 shrink-0 text-[10.5px] text-[#D4AF37]">
+            <span className="flex items-center gap-1">
+              <Sparkles className="w-3 h-3 text-[#F59E0B]" />
+              <span>Special Diwali Drop Live</span>
+            </span>
+            <span className="text-neutral-600">|</span>
+            <button
+              type="button"
+              onClick={onOpenPodStudio}
+              className="text-neutral-300 hover:text-white underline underline-offset-2 cursor-pointer"
+            >
+              Custom POD Studio
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <header className="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EAE2D7] transition-colors w-full">
+        <div className="max-w-[1800px] mx-auto px-3 sm:px-6 md:px-8 h-13 sm:h-14 flex items-center justify-between gap-2 sm:gap-4">
           {/* Left Zone: Hamburger Menu Trigger */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
-              className="p-2 -ml-2 text-[#111111] hover:bg-neutral-100 rounded transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 -ml-1 sm:-ml-2 text-[#111111] hover:bg-[#EFE8DE] rounded transition-colors cursor-pointer"
             >
               <Menu className="w-5 h-5 stroke-[1.75]" />
             </button>
             <button
               type="button"
               onClick={onOpenPodStudio}
-              className="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.14em] uppercase text-[#111111] hover:text-neutral-600 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.14em] uppercase text-[#111111] hover:text-[#B45309] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#B45309]" />
               <span>POD Custom Studio</span>
             </button>
           </div>
 
-          {/* Center Zone: Brand Wordmark matching reference SNITCH stencil/geometric aesthetic */}
+          {/* Center Zone: Brand Wordmark */}
           <a
             href="#top"
             onClick={(e) => {
@@ -104,13 +134,13 @@ export const Header: React.FC<HeaderProps> = ({
               onSelectCategory('ALL');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="font-display text-2xl sm:text-[28px] font-bold tracking-[0.18em] uppercase text-[#111111] whitespace-nowrap shrink-0 select-none"
+            className="font-display text-xl sm:text-2xl md:text-[28px] font-bold tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#111111] whitespace-nowrap select-none"
           >
             NOVAIRE
           </a>
 
           {/* Right Zone: Search, Bag, Wishlist, Account/Shopify Admin */}
-          <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
+          <div className="flex items-center gap-0.5 sm:gap-2 shrink-0">
             {/* Global Currency Switcher */}
             <div className="hidden md:flex items-center mr-1">
               <label htmlFor="currency-select" className="sr-only">
@@ -121,7 +151,7 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-label="Select Currency"
                 value={currency}
                 onChange={(e) => onCurrencyChange(e.target.value as CurrencyCode)}
-                className="text-[11px] font-medium tracking-wider uppercase bg-neutral-100 hover:bg-neutral-200/80 text-[#111111] rounded px-2 py-1 border border-transparent focus:border-neutral-400 focus:outline-none cursor-pointer"
+                className="text-[11px] font-medium tracking-wider uppercase bg-[#EFE8DE] hover:bg-[#E5DDCF] text-[#111111] rounded px-2 py-1 border border-transparent focus:border-neutral-400 focus:outline-none cursor-pointer"
               >
                 {Object.keys(CURRENCY_CONFIG).map((code) => (
                   <option key={code} value={code}>
@@ -135,35 +165,35 @@ export const Header: React.FC<HeaderProps> = ({
               type="button"
               onClick={() => setSearchOpen((prev) => !prev)}
               aria-label="Toggle product search"
-              className="p-2 text-[#111111] hover:bg-neutral-100 rounded transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 text-[#111111] hover:bg-[#EFE8DE] rounded transition-colors cursor-pointer"
             >
-              <Search className="w-[18px] h-[18px] stroke-[1.75]" />
-            </button>
-
-            <button
-              type="button"
-              onClick={onOpenCart}
-              aria-label={`Shopping bag with ${cartCount} items`}
-              className="relative p-2 text-[#111111] hover:bg-neutral-100 rounded transition-colors cursor-pointer"
-            >
-              <ShoppingBag className="w-[18px] h-[18px] stroke-[1.75]" />
-              {cartCount > 0 && (
-                <span className="absolute top-1 right-1 min-w-[16px] h-4 px-1 bg-[#111111] text-white text-[10px] font-bold rounded-full flex items-center justify-center tabular-nums">
-                  {cartCount}
-                </span>
-              )}
+              <Search className="w-[17px] h-[17px] sm:w-[18px] sm:h-[18px] stroke-[1.75]" />
             </button>
 
             <button
               type="button"
               onClick={onOpenWishlist}
               aria-label={`Wishlist with ${wishlistCount} saved items`}
-              className="relative p-2 text-[#111111] hover:bg-neutral-100 rounded transition-colors cursor-pointer"
+              className="relative p-1.5 sm:p-2 text-[#111111] hover:bg-[#EFE8DE] rounded transition-colors cursor-pointer"
             >
-              <Heart className="w-[18px] h-[18px] stroke-[1.75]" />
+              <Heart className="w-[17px] h-[17px] sm:w-[18px] sm:h-[18px] stroke-[1.75]" />
               {wishlistCount > 0 && (
-                <span className="absolute top-1 right-1 min-w-[16px] h-4 px-1 bg-[#E85D3F] text-white text-[10px] font-bold rounded-full flex items-center justify-center tabular-nums">
+                <span className="absolute top-0.5 right-0.5 min-w-[15px] h-3.5 px-0.5 bg-[#B45309] text-white text-[9px] font-bold rounded-full flex items-center justify-center tabular-nums">
                   {wishlistCount}
+                </span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={onOpenCart}
+              aria-label={`Shopping bag with ${cartCount} items`}
+              className="relative p-1.5 sm:p-2 text-[#111111] hover:bg-[#EFE8DE] rounded transition-colors cursor-pointer"
+            >
+              <ShoppingBag className="w-[17px] h-[17px] sm:w-[18px] sm:h-[18px] stroke-[1.75]" />
+              {cartCount > 0 && (
+                <span className="absolute top-0.5 right-0.5 min-w-[15px] h-3.5 px-0.5 bg-[#111111] text-white text-[9px] font-bold rounded-full flex items-center justify-center tabular-nums">
+                  {cartCount}
                 </span>
               )}
             </button>
@@ -173,16 +203,16 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onOpenShopifyAdmin('ADMIN')}
               aria-label="Shopify Admin and Liquid Architecture"
               title="Shopify Admin & Liquid Theme Studio"
-              className="p-2 text-[#111111] hover:bg-neutral-100 rounded transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 text-[#111111] hover:bg-[#EFE8DE] rounded transition-colors cursor-pointer"
             >
-              <User className="w-[18px] h-[18px] stroke-[1.75]" />
+              <User className="w-[17px] h-[17px] sm:w-[18px] sm:h-[18px] stroke-[1.75]" />
             </button>
           </div>
         </div>
 
         {/* Expandable Search Bar */}
         {searchOpen && (
-          <div className="border-t border-neutral-200 bg-neutral-50 px-4 sm:px-8 py-3 animate-fade-slide">
+          <div className="border-t border-[#EAE2D7] bg-[#F5EFE6] px-3 sm:px-8 py-3 animate-fade-slide">
             <div className="max-w-3xl mx-auto flex items-center gap-3">
               <Search className="w-4 h-4 text-neutral-500 shrink-0" />
               <input

@@ -29,7 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [imgError, setImgError] = useState(false);
 
   return (
-    <article className="group flex flex-col bg-white">
+    <article className="group flex flex-col bg-[#FAF7F2] max-w-full overflow-hidden">
       {/* Studio Product Image Container */}
       <div
         onClick={() => onOpenProductModal(product, selectedSwatch)}
@@ -41,7 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           }
         }}
         aria-label={`View ${product.title}`}
-        className="relative w-full aspect-[336/567] bg-[#EFEFEF] overflow-hidden cursor-pointer"
+        className="relative w-full aspect-[336/567] bg-[#ECE7DF] overflow-hidden cursor-pointer border border-[#EAE3D9]"
       >
         {!imgError ? (
           <img
